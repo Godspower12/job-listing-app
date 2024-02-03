@@ -1,6 +1,5 @@
 import './App.css';
 import HeaderImg from "./images/bg-header-desktop.svg"
-import Card from './Card'
 
 import data from "./data.json"
 import { useEffect, useState } from 'react';
@@ -15,7 +14,7 @@ function App() {
   useEffect(() => {
     const filtered = data.filter((job) => selectedLanguages.every((language) => job.level.includes(language) || job.languages.includes(language) || job.role.includes(language)));
     setFilteredJobs(filtered);
-  }, [selectedLanguages, data]);
+  }, [selectedLanguages]);
 
 
 
@@ -73,7 +72,7 @@ function App() {
      max-md:flex-wrap max-md:left-5 
       max-md:h-auto max-md:py-5 flex gap-5 items-center pl-5 max-md:w-[90%] shadow-lg rounded-md h-[160px] overflow-hidden  ">
 
-        {selectedLanguages.length == 0 ? <h3 className='items-center justify-center font-bold text-lg text-gray-500 w-full align-center text-center'>Select an item</h3> : selectedLanguages.map((language, index) => (
+        {selectedLanguages.length === 0 ? <h3 className='items-center justify-center font-bold text-lg text-gray-500 w-full align-center text-center'>Select an item</h3> : selectedLanguages.map((language, index) => (
           <div key={index}  className='flex gap-1 text-lg font-bold max-md:text-sm'>
             <span className='cursor-pointer'>{language}</span>
           <span onClick={() => handleRemoveClick(language)} className='cursor-pointer bg-black text-white px-1 rounded-md'>X</span>
